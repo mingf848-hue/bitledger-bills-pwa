@@ -1,8 +1,9 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
-import { CalendarDays, X } from "lucide-react";
+import { X } from "lucide-react";
 import type { BillEntry, BillPageSnapshot, BillType } from "@/lib/types/bill";
+import { BillDetailModal } from "@/components/bills/bill-detail-modal";
 import { filterBillGroups } from "@/lib/utils/grouping";
 import { AppHeader } from "@/components/layout/app-header";
 import { BottomTabBar } from "@/components/layout/bottom-tab-bar";
@@ -17,8 +18,6 @@ import { BillDateGroup } from "@/components/bills/bill-date-group";
 import { EmptyState } from "@/components/common/empty-state";
 import { useBillFilters } from "@/hooks/use-bill-filters";
 import { useBillsQuery } from "@/hooks/use-bills-query";
-import { formatSignedAmount } from "@/lib/utils/currency";
-import { cn } from "@/lib/utils/classnames";
 
 type BillsPageViewProps = {
   initialData: BillPageSnapshot;
@@ -27,7 +26,7 @@ type BillsPageViewProps = {
 const monthOptions = ["2026年2月", "2026年3月", "2026年4月"];
 
 export function BillsPageView({ initialData }: BillsPageViewProps) {
-  const { data } = useBillsQuery(initialData);
+  const { data, isSavingNote, saveBillNote } = useBillsQuery(initialData);
   const {
     activeCategory,
     setActiveCategory,
@@ -96,6 +95,19 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
   function openBillDetail(item: BillEntry) {
     setSelectedBill(item);
     setStatusMessage(`已打开 ${item.title} 的详情`);
+  }
+
+  async function handleSaveBillNote(note: string | null) {
+    if (!selectedBill) {
+      return;
+    }
+
+    const snapshot = await saveBillNote(selectedBill.id, note);
+    const updatedBill =
+      snapshot.groups.flatMap((group) => group.items).find((item) => item.id === selectedBill.id) ?? null;
+
+    setSelectedBill(updatedBill);
+    setStatusMessage(note ? "备注已保存" : "备注已清空");
   }
 
   const filteredGroups = useMemo(
@@ -229,62 +241,17 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
         )}
       </div>
 
-      {selectedBill ? (
-        <div className="card-surface rounded-[18px] px-4 py-4">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <div className="text-[13px] font-semibold leading-4 text-[var(--text-primary)]">账单详情</div>
-              <div className="mt-1 text-[11px] leading-4 text-[var(--text-secondary)]">
-                {selectedBill.title} · {selectedBill.accountName}
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => setSelectedBill(null)}
-              className="flex h-7 w-7 items-center justify-center rounded-[10px] bg-[var(--chip-bg)] text-[var(--text-secondary)]"
-              aria-label="Close bill detail"
-            >
-              <X className="h-4 w-4" strokeWidth={2} />
-            </button>
-          </div>
-          <div className="mt-3 grid grid-cols-2 gap-3 text-[11px] leading-4 text-[var(--text-secondary)]">
-            <div className="rounded-[12px] bg-[var(--chip-bg)] px-3 py-2">
-              <div>金额</div>
-              <div className={cn("mt-1 text-[12px] font-semibold", selectedBill.amount > 0 ? "text-[var(--income)]" : "text-[var(--expense)]")}>
-                {formatSignedAmount(selectedBill.amount, selectedBill.currency)}
-              </div>
-            </div>
-            <div className="rounded-[12px] bg-[var(--chip-bg)] px-3 py-2">
-              <div>分类</div>
-              <div className="mt-1 text-[12px] font-semibold text-[var(--text-primary)]">{selectedBill.tagLabel}</div>
-            </div>
-            <div className="rounded-[12px] bg-[var(--chip-bg)] px-3 py-2">
-              <div>时间</div>
-              <div className="mt-1 text-[12px] font-semibold text-[var(--text-primary)]">
-                {new Date(selectedBill.occurredAt).toLocaleString("zh-CN", {
-                  month: "numeric",
-                  day: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour12: false,
-                })}
-              </div>
-            </div>
-            <div className="rounded-[12px] bg-[var(--chip-bg)] px-3 py-2">
-              <div>备注</div>
-              <div className="mt-1 text-[12px] font-semibold text-[var(--text-primary)]">
-                {selectedBill.note ?? selectedBill.merchantName ?? "暂无备注"}
-              </div>
-            </div>
-          </div>
-          <div className="mt-3 flex items-center gap-2 text-[11px] leading-4 text-[var(--text-secondary)]">
-            <CalendarDays className="h-3.5 w-3.5" strokeWidth={1.9} />
-            <span>点击其他账单行可快速切换详情</span>
-          </div>
-        </div>
-      ) : null}
-
       <BottomTabBar />
+
+      {selectedBill ? (
+        <BillDetailModal
+          key={selectedBill.id}
+          bill={selectedBill}
+          isSaving={isSavingNote}
+          onClose={() => setSelectedBill(null)}
+          onSave={handleSaveBillNote}
+        />
+      ) : null}
     </MobilePwaShell>
   );
 }

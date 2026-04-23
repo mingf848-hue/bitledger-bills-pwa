@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import type { BillPageSnapshot } from "@/lib/types/bill";
-import { getBillPageSnapshot } from "@/services/bills.service";
+import { getBillPageSnapshot, updateBillNote } from "@/services/bills.service";
 
 export function useBillsQuery(initialData: BillPageSnapshot) {
   const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
+  const [isSavingNote, setIsSavingNote] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
@@ -28,5 +29,17 @@ export function useBillsQuery(initialData: BillPageSnapshot) {
     };
   }, []);
 
-  return { data, isLoading };
+  async function saveBillNote(billId: string, note: string | null) {
+    setIsSavingNote(true);
+
+    try {
+      const snapshot = await updateBillNote({ billId, note });
+      setData(snapshot);
+      return snapshot;
+    } finally {
+      setIsSavingNote(false);
+    }
+  }
+
+  return { data, isLoading, isSavingNote, saveBillNote };
 }

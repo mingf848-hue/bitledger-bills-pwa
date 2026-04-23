@@ -1,4 +1,4 @@
-import type { BillGroup, BillPageSnapshot } from "@/lib/types/bill";
+import type { BillGroup, BillPageSnapshot, UpdateBillNoteInput } from "@/lib/types/bill";
 
 const mockGroups: BillGroup[] = [
   {
@@ -16,7 +16,7 @@ const mockGroups: BillGroup[] = [
         categoryId: "cat-shopping",
         type: "expense",
         title: "Apple Pay 自动记账",
-        note: null,
+        note: "给家人买礼物",
         amount: -89.9,
         currency: "AED",
         occurredAt: "2026-04-23T18:45:00.000Z",
@@ -203,16 +203,70 @@ const mockGroups: BillGroup[] = [
   },
 ];
 
-export async function getBillPageSnapshot(): Promise<BillPageSnapshot> {
+type BillsRepository = {
+  getBillPageSnapshot: () => Promise<BillPageSnapshot>;
+  updateBillNote: (input: UpdateBillNoteInput) => Promise<BillPageSnapshot>;
+};
+
+function cloneSnapshot(snapshot: BillPageSnapshot): BillPageSnapshot {
   return {
-    monthLabel: "2026年4月",
-    summary: {
-      expenseAmount: 7109.71,
-      expenseTrend: 13.2,
-      incomeAmount: 47556.16,
-      incomeTrend: 18.7,
-      currency: "AED",
-    },
-    groups: mockGroups,
+    ...snapshot,
+    groups: snapshot.groups.map((group) => ({
+      ...group,
+      items: group.items.map((item) => ({ ...item })),
+    })),
   };
+}
+
+let mockSnapshot: BillPageSnapshot = {
+  monthLabel: "2026年4月",
+  summary: {
+    expenseAmount: 7109.71,
+    expenseTrend: 13.2,
+    incomeAmount: 47556.16,
+    incomeTrend: 18.7,
+    currency: "AED",
+  },
+  groups: mockGroups,
+};
+
+const mockBillsRepository: BillsRepository = {
+  async getBillPageSnapshot() {
+    return cloneSnapshot(mockSnapshot);
+  },
+
+  async updateBillNote({ billId, note }) {
+    mockSnapshot = {
+      ...mockSnapshot,
+      groups: mockSnapshot.groups.map((group) => ({
+        ...group,
+        items: group.items.map((item) =>
+          item.id === billId
+            ? {
+                ...item,
+                note,
+              }
+            : item,
+        ),
+      })),
+    };
+
+    return cloneSnapshot(mockSnapshot);
+  },
+};
+
+function createBillsRepository(): BillsRepository {
+  // Reserve a database boundary here. Replace this mock repository with a
+  // Supabase-backed implementation later without changing the UI contract.
+  return mockBillsRepository;
+}
+
+const billsRepository = createBillsRepository();
+
+export async function getBillPageSnapshot(): Promise<BillPageSnapshot> {
+  return billsRepository.getBillPageSnapshot();
+}
+
+export async function updateBillNote(input: UpdateBillNoteInput): Promise<BillPageSnapshot> {
+  return billsRepository.updateBillNote(input);
 }

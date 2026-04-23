@@ -42,3 +42,8 @@ export type BillPageSnapshot = {
   summary: BillSummary;
   groups: BillGroup[];
 };
+
+export type UpdateBillNoteInput = {
+  billId: string;
+  note: string | null;
+};
