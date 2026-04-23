@@ -1,13 +1,14 @@
 import { SectionCard } from "@/components/common/section-card";
 import { BillItem } from "@/components/bills/bill-item";
-import type { BillGroup } from "@/lib/types/bill";
+import type { BillEntry, BillGroup } from "@/lib/types/bill";
 import { formatPlainAmount } from "@/lib/utils/currency";
 
 type BillDateGroupProps = {
   group: BillGroup;
+  onItemClick?: (item: BillEntry) => void;
 };
 
-export function BillDateGroup({ group }: BillDateGroupProps) {
+export function BillDateGroup({ group, onItemClick }: BillDateGroupProps) {
   return (
     <SectionCard className="overflow-hidden">
       <div className="flex items-start justify-between px-3 pt-[10px] pb-1.5">
@@ -39,7 +40,7 @@ export function BillDateGroup({ group }: BillDateGroupProps) {
 
       <div>
         {group.items.map((item, index) => (
-          <BillItem key={item.id} item={item} first={index === 0} />
+          <BillItem key={item.id} item={item} first={index === 0} onClick={onItemClick} />
         ))}
       </div>
     </SectionCard>

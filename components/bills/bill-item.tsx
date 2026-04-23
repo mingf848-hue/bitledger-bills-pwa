@@ -8,15 +8,18 @@ import { cn } from "@/lib/utils/classnames";
 type BillItemProps = {
   item: BillEntry;
   first?: boolean;
+  onClick?: (item: BillEntry) => void;
 };
 
-export function BillItem({ item, first = false }: BillItemProps) {
+export function BillItem({ item, first = false, onClick }: BillItemProps) {
   const isPositive = item.amount > 0;
 
   return (
-    <div
+    <button
+      type="button"
+      onClick={() => onClick?.(item)}
       className={cn(
-        "grid h-[54px] grid-cols-[32px_minmax(0,1fr)_40px_88px_10px] items-center gap-2 px-3 py-[6px]",
+        "grid h-[54px] w-full grid-cols-[32px_minmax(0,1fr)_40px_88px_10px] items-center gap-2 px-3 py-[6px] text-left transition-colors hover:bg-[rgba(15,23,42,0.02)]",
         !first && "border-t border-[var(--divider)]",
       )}
     >
@@ -56,6 +59,6 @@ export function BillItem({ item, first = false }: BillItemProps) {
       </div>
 
       <ChevronRight className="h-[10px] w-[10px] justify-self-end text-[var(--text-secondary)]" strokeWidth={2} />
-    </div>
+    </button>
   );
 }

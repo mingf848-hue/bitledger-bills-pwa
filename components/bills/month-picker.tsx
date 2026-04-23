@@ -2,12 +2,14 @@ import { CalendarDays, ChevronDown } from "lucide-react";
 
 type MonthPickerProps = {
   monthLabel: string;
+  onClick?: () => void;
 };
 
-export function MonthPicker({ monthLabel }: MonthPickerProps) {
+export function MonthPicker({ monthLabel, onClick }: MonthPickerProps) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className="card-surface flex h-[42px] w-[140px] shrink-0 items-center justify-between rounded-[15px] px-[11px]"
     >
       <span className="flex min-w-0 flex-1 items-center gap-2 whitespace-nowrap">
