@@ -26,7 +26,7 @@ export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
             type="button"
             onClick={() => onChange(item.value)}
             className={cn(
-              "flex h-[28px] w-[44px] shrink-0 items-center justify-center whitespace-nowrap rounded-[16px] border px-3 text-[14px] font-medium leading-5 transition-[background-color,color,box-shadow,border-color]",
+              "flex h-[28px] w-[44px] shrink-0 items-center justify-center whitespace-nowrap rounded-[12px] border px-3 text-[14px] font-medium leading-5 transition-[background-color,color,box-shadow,border-color]",
               active
                 ? "border-transparent bg-[#1665F5] text-white shadow-[0_2px_4px_rgba(15,23,42,0.08)]"
                 : "border-[#E6E8F2] bg-[#F5F7FA] text-[#4B5267] shadow-[0_2px_4px_rgba(15,23,42,0.05)]",
