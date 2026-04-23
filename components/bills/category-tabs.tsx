@@ -26,10 +26,10 @@ export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
             type="button"
             onClick={() => onChange(item.value)}
             className={cn(
-              "flex h-[28px] min-w-[34px] shrink-0 items-center justify-center whitespace-nowrap rounded-[13px] px-2 text-[12px] font-medium leading-[14px] transition-[background-color,color,box-shadow,border-color]",
+              "flex h-[28px] min-w-[34px] shrink-0 items-center justify-center whitespace-nowrap rounded-[16px] px-2 text-[12px] font-medium leading-[14px] transition-[background-color,color,box-shadow,border-color]",
               active
                 ? "bg-[var(--brand-primary-strong)] text-white shadow-[0_2px_6px_rgba(22,101,245,0.14)]"
-                : "border border-transparent bg-[#F5F7FA] text-[var(--filter-chip-text)]",
+                : "border border-[#E3E8F1] bg-[#EEF2F7] text-[var(--filter-chip-text)]",
             )}
           >
             {item.label}
