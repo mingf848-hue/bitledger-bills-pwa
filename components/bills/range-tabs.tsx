@@ -14,7 +14,7 @@ type RangeTabsProps = {
 
 export function RangeTabs({ value, onChange }: RangeTabsProps) {
   return (
-    <div className="scrollbar-hidden flex shrink-0 items-center gap-0 overflow-x-auto">
+    <div className="flex shrink-0 items-center gap-0">
       {items.map((item) => {
         const active = item.value === value;
 
