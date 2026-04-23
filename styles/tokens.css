@@ -2,6 +2,7 @@
   --bg-page: #f5f7fb;
   --bg-card: #ffffff;
   --brand-primary: #2f6bff;
+  --brand-primary-strong: #1665f5;
   --brand-primary-soft: #eef4ff;
   --income: #17b26a;
   --income-soft: #eaf8f1;
@@ -13,6 +14,11 @@
   --text-secondary: #667085;
   --text-tertiary: #98a2b3;
   --chip-bg: #f2f4f7;
+  --filter-group-bg: #f6f8fb;
+  --filter-chip-bg: #f5f7fa;
+  --filter-chip-text: #4b5267;
+  --filter-segment-border: #e8ebf1;
+  --filter-segment-text: #8e99ac;
   --border-soft: rgba(15, 23, 42, 0.04);
   --divider: rgba(15, 23, 42, 0.06);
   --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.04);

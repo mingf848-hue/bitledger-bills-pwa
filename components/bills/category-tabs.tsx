@@ -1,12 +1,12 @@
 import type { BillType } from "@/lib/types/bill";
 import { cn } from "@/lib/utils/classnames";
 
-const items: Array<{ label: string; value: BillType | "all"; minWidthClassName: string }> = [
-  { label: "全部", value: "all", minWidthClassName: "min-w-[46px]" },
-  { label: "支出", value: "expense", minWidthClassName: "min-w-[48px]" },
-  { label: "收入", value: "income", minWidthClassName: "min-w-[48px]" },
-  { label: "理财", value: "wealth", minWidthClassName: "min-w-[48px]" },
-  { label: "转账", value: "transfer", minWidthClassName: "min-w-[48px]" },
+const items: Array<{ label: string; value: BillType | "all" }> = [
+  { label: "全部", value: "all" },
+  { label: "支出", value: "expense" },
+  { label: "收入", value: "income" },
+  { label: "理财", value: "wealth" },
+  { label: "转账", value: "transfer" },
 ];
 
 type CategoryTabsProps = {
@@ -16,7 +16,7 @@ type CategoryTabsProps = {
 
 export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
   return (
-    <div className="flex min-w-0 items-center gap-1.5">
+    <div className="flex min-w-0 flex-1 items-center justify-start gap-3">
       {items.map((item) => {
         const active = item.value === value;
 
@@ -26,11 +26,10 @@ export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
             type="button"
             onClick={() => onChange(item.value)}
             className={cn(
-              "flex h-[30px] shrink-0 items-center justify-center whitespace-nowrap rounded-[10px] px-[10px] text-[12px] font-medium leading-4 transition-colors",
-              item.minWidthClassName,
+              "flex h-8 min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-[16px] px-2.5 text-[14px] font-medium leading-5 transition-[background-color,color,box-shadow,border-color]",
               active
-                ? "bg-[var(--brand-primary)] text-white shadow-[0_4px_10px_rgba(47,107,255,0.15)]"
-                : "bg-[var(--chip-bg)] text-[var(--text-primary)]",
+                ? "bg-[var(--brand-primary-strong)] text-white shadow-[0_4px_10px_rgba(22,101,245,0.18)]"
+                : "border border-transparent bg-[var(--filter-chip-bg)] text-[var(--filter-chip-text)] shadow-[0_1px_3px_rgba(15,23,42,0.05)]",
             )}
           >
             {item.label}

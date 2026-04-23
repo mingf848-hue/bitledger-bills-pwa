@@ -14,7 +14,7 @@ type RangeTabsProps = {
 
 export function RangeTabs({ value, onChange }: RangeTabsProps) {
   return (
-    <div className="flex h-[30px] w-[84px] shrink-0 items-center rounded-[10px] bg-[var(--chip-bg)] p-[2px]">
+    <div className="flex shrink-0 items-center justify-center gap-2">
       {items.map((item) => {
         const active = item.value === value;
 
@@ -24,8 +24,10 @@ export function RangeTabs({ value, onChange }: RangeTabsProps) {
             type="button"
             onClick={() => onChange(item.value)}
             className={cn(
-              "flex h-[26px] w-[26px] items-center justify-center rounded-[8px] text-[12px] font-medium leading-4 transition-colors",
-              active ? "bg-white text-[var(--brand-primary)] shadow-[0_2px_6px_rgba(15,23,42,0.05)]" : "text-[var(--text-secondary)]",
+              "flex h-6 w-8 items-center justify-center rounded-[12px] border bg-white text-[12px] font-medium leading-4 transition-[border-color,color,box-shadow]",
+              active
+                ? "border-[var(--brand-primary-strong)] text-[var(--brand-primary-strong)] shadow-[0_2px_6px_rgba(22,101,245,0.08)]"
+                : "border-[var(--filter-segment-border)] text-[var(--filter-segment-text)] shadow-[0_1px_2px_rgba(15,23,42,0.05)]",
             )}
           >
             {item.label}
