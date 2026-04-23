@@ -21,12 +21,12 @@ export function BillDetailModal({
   onClose,
   onSave,
 }: BillDetailModalProps) {
-  const [noteDraft, setNoteDraft] = useState(bill.note ?? "");
+  const [noteDraft, setNoteDraft] = useState(bill.title);
 
   const isPositive = bill.amount > 0;
+  const normalizedNote = noteDraft.trim();
 
   async function handleSave() {
-    const normalizedNote = noteDraft.trim();
     await onSave(normalizedNote ? normalizedNote : null);
   }
 
@@ -132,7 +132,7 @@ export function BillDetailModal({
           <button
             type="button"
             onClick={handleSave}
-            disabled={isSaving}
+            disabled={isSaving || normalizedNote.length === 0}
             className="flex-1 rounded-[14px] bg-[#1665F5] px-4 py-3 text-[16px] font-medium leading-5 text-white shadow-[0_12px_24px_rgba(22,101,245,0.18)] disabled:cursor-not-allowed disabled:opacity-70"
           >
             {isSaving ? "保存中..." : "保存"}

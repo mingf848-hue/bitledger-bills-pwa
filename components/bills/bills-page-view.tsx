@@ -107,7 +107,7 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
       snapshot.groups.flatMap((group) => group.items).find((item) => item.id === selectedBill.id) ?? null;
 
     setSelectedBill(updatedBill);
-    setStatusMessage(note ? "备注已保存" : "备注已清空");
+    setStatusMessage(note ? "账单文案已保存" : "备注已清空");
   }
 
   const filteredGroups = useMemo(
@@ -245,7 +245,7 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
 
       {selectedBill ? (
         <BillDetailModal
-          key={selectedBill.id}
+          key={`${selectedBill.id}:${selectedBill.title}`}
           bill={selectedBill}
           isSaving={isSavingNote}
           onClose={() => setSelectedBill(null)}
