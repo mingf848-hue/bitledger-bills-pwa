@@ -1,0 +1,22 @@
+:root {
+  --bg-page: #f5f7fb;
+  --bg-card: #ffffff;
+  --brand-primary: #2f6bff;
+  --brand-primary-soft: #eef4ff;
+  --income: #17b26a;
+  --income-soft: #eaf8f1;
+  --expense: #ff5a6b;
+  --expense-soft: #fff0f3;
+  --warning: #ff9f2f;
+  --warning-soft: #fff7e8;
+  --text-primary: #1f2a44;
+  --text-secondary: #667085;
+  --text-tertiary: #98a2b3;
+  --chip-bg: #f2f4f7;
+  --border-soft: rgba(15, 23, 42, 0.04);
+  --divider: rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 4px 20px rgba(15, 23, 42, 0.04);
+  --radius-input: 18px;
+  --radius-card: 24px;
+  --radius-tabbar: 28px;
+}

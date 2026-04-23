@@ -1,36 +1,180 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BitLedger Bills PWA
 
-## Getting Started
+BitLedger Bills PWA is a mobile-first bookkeeping web app built with Next.js, TypeScript, Tailwind CSS, and Supabase-ready services. The current scope focuses on a high-fidelity bills page for a 430px mobile viewport with safe-area support and a Vercel-friendly setup.
 
-First, run the development server:
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Supabase
+- Vercel
+- GitHub
+
+## Product Scope
+
+- Auth module placeholder: login and register
+- Bills module: implemented high-fidelity mobile bills page
+- Accounts module: service scaffolded
+- Categories module: service scaffolded
+- Assets module: service scaffolded
+- PWA metadata: manifest, icons, standalone-ready settings
+
+## Project Structure
+
+```text
+app/
+  (auth)/
+  (dashboard)/
+  apple-icon.tsx
+  globals.css
+  icon.tsx
+  layout.tsx
+  manifest.ts
+components/
+  bills/
+  common/
+  layout/
+  pwa/
+hooks/
+lib/
+  constants/
+  supabase/
+  types/
+  utils/
+services/
+styles/
+public/
+  logos/
+  pwa/
+```
+
+## Environment Variables
+
+Frontend browser code only reads:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+Do not expose service-role keys, JWT secrets, or any `POSTGRES_*` variables to browser code.
+
+## Local Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create `.env.local`:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000). The root route redirects to `/bills`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+## Vercel Deployment
 
-To learn more about Next.js, take a look at the following resources:
+1. Push this repository to GitHub.
+2. Import the repository in Vercel.
+3. Set framework preset to Next.js.
+4. Add these environment variables in Vercel project settings:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+5. Deploy.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Basic Data Assumptions
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### profiles
 
-## Deploy on Vercel
+- `id`
+- `user_id`
+- `display_name`
+- `avatar_url`
+- `default_currency`
+- `locale`
+- `timezone`
+- `created_at`
+- `updated_at`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### accounts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `id`
+- `user_id`
+- `name`
+- `type`
+- `currency`
+- `institution_name`
+- `mask`
+- `icon`
+- `balance`
+- `is_visible`
+- `sort_order`
+- `created_at`
+- `updated_at`
+
+### categories
+
+- `id`
+- `user_id`
+- `name`
+- `type`
+- `icon`
+- `color`
+- `parent_id`
+- `is_system`
+- `sort_order`
+- `created_at`
+- `updated_at`
+
+### bills
+
+- `id`
+- `user_id`
+- `account_id`
+- `category_id`
+- `type`
+- `title`
+- `note`
+- `amount`
+- `currency`
+- `occurred_at`
+- `merchant_name`
+- `transfer_target_account_id`
+- `created_at`
+- `updated_at`
+
+### assets
+
+- `id`
+- `user_id`
+- `name`
+- `type`
+- `platform`
+- `currency`
+- `amount`
+- `valuation_amount`
+- `valuation_currency`
+- `cost_basis`
+- `is_visible`
+- `created_at`
+- `updated_at`
+
+## Notes
+
+- The current bills page uses mock snapshot data through the `services/` layer so the UI can be reviewed before wiring live Supabase tables.
+- The browser-side Supabase client is isolated under `lib/supabase/` and intentionally uses only public environment variables.
