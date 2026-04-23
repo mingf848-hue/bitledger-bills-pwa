@@ -54,7 +54,7 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
         <FilterButton />
       </div>
 
-      <div className="flex items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-1.5">
         <CategoryTabs value={activeCategory} onChange={setActiveCategory} />
         <RangeTabs value={activeRange} onChange={setActiveRange} />
       </div>
