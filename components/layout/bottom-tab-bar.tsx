@@ -17,8 +17,8 @@ export function BottomTabBar() {
   const pathname = usePathname();
 
   return (
-    <div className="sticky bottom-0 mt-auto pt-5">
-      <nav className="card-surface flex h-[108px] items-start justify-between rounded-[28px] px-[22px] pt-3">
+    <div className="sticky bottom-0 mt-auto pt-4">
+      <nav className="card-surface flex h-[94px] items-start justify-between rounded-[26px] px-[18px] pt-[10px]">
         {items.map(({ href, label, icon: Icon }) => {
           const active = pathname === href;
 
@@ -26,19 +26,19 @@ export function BottomTabBar() {
             <Link
               key={href}
               href={href}
-              className="flex w-16 flex-col items-center gap-2 pt-1"
+              className="flex w-[58px] flex-col items-center gap-1.5 pt-1"
             >
               <span
                 className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-2xl transition-colors",
+                  "flex h-8 w-8 items-center justify-center rounded-[14px] transition-colors",
                   active ? "bg-[var(--brand-primary-soft)] text-[var(--brand-primary)]" : "text-[var(--text-primary)]",
                 )}
               >
-                <Icon className={cn("h-6 w-6", active && "fill-current/0")} strokeWidth={1.9} />
+                <Icon className={cn("h-5 w-5", active && "fill-current/0")} strokeWidth={1.9} />
               </span>
               <span
                 className={cn(
-                  "text-[14px] font-medium leading-5",
+                  "text-[12px] font-medium leading-4",
                   active ? "text-[var(--brand-primary)]" : "text-[var(--text-primary)]",
                 )}
               >

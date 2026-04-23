@@ -10,27 +10,27 @@ type BillDateGroupProps = {
 export function BillDateGroup({ group }: BillDateGroupProps) {
   return (
     <SectionCard className="overflow-hidden">
-      <div className="flex items-start justify-between px-5 pt-[18px] pb-[10px]">
+      <div className="flex items-start justify-between px-4 pt-[14px] pb-[8px]">
         <div>
-          <div className="flex items-baseline gap-3">
-            <h2 className="text-[18px] font-bold leading-[26px] text-[var(--text-primary)]">
+          <div className="flex items-baseline gap-2">
+            <h2 className="text-[15px] font-semibold leading-[22px] text-[var(--text-primary)]">
               {group.label}
             </h2>
-            <span className="text-[14px] font-semibold leading-5 text-[var(--text-secondary)]">
+            <span className="text-[12px] font-medium leading-4 text-[var(--text-secondary)]">
               {group.subtitle}
             </span>
           </div>
         </div>
-        <div className="flex flex-wrap items-center justify-end gap-4 text-[14px] leading-5">
+        <div className="flex flex-wrap items-center justify-end gap-3 text-[12px] leading-4">
           <span className="text-[var(--text-secondary)]">
             支出{" "}
-            <span className="font-semibold text-[var(--expense)]">
+            <span className="font-medium text-[var(--expense)]">
               {formatPlainAmount(group.expenseTotal)} {group.currency}
             </span>
           </span>
           <span className="text-[var(--text-secondary)]">
             收入{" "}
-            <span className="font-semibold text-[var(--income)]">
+            <span className="font-medium text-[var(--income)]">
               {formatPlainAmount(group.incomeTotal)} {group.currency}
             </span>
           </span>

@@ -16,7 +16,7 @@ type CategoryTabsProps = {
 
 export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
   return (
-    <div className="flex items-center gap-[10px]">
+    <div className="flex items-center gap-2">
       {items.map((item) => {
         const active = item.value === value;
 
@@ -26,9 +26,9 @@ export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
             type="button"
             onClick={() => onChange(item.value)}
             className={cn(
-              "flex h-11 min-w-14 items-center justify-center rounded-[14px] px-[18px] text-[16px] font-semibold leading-6 transition-colors",
+              "flex h-[38px] min-w-[50px] items-center justify-center rounded-[12px] px-[14px] text-[14px] font-medium leading-5 transition-colors",
               active
-                ? "bg-[var(--brand-primary)] text-white shadow-[0_8px_18px_rgba(47,107,255,0.22)]"
+                ? "bg-[var(--brand-primary)] text-white shadow-[0_6px_14px_rgba(47,107,255,0.18)]"
                 : "bg-[var(--chip-bg)] text-[var(--text-primary)]",
             )}
           >

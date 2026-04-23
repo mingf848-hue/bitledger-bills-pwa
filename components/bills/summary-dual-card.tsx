@@ -8,8 +8,8 @@ type SummaryDualCardProps = {
 
 export function SummaryDualCard({ summary }: SummaryDualCardProps) {
   return (
-    <SectionCard className="grid h-40 grid-cols-2 px-5 py-5">
-      <div className="pr-5">
+    <SectionCard className="grid h-[132px] grid-cols-2 px-4 py-4">
+      <div className="pr-4">
         <SummaryPanel
           label="本月支出"
           amount={summary.expenseAmount}
@@ -18,7 +18,7 @@ export function SummaryDualCard({ summary }: SummaryDualCardProps) {
           tone="expense"
         />
       </div>
-      <div className="border-l border-[var(--divider)] pl-5">
+      <div className="border-l border-[var(--divider)] pl-4">
         <SummaryPanel
           label="本月收入"
           amount={summary.incomeAmount}

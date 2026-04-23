@@ -16,19 +16,19 @@ export function BillItem({ item, first = false }: BillItemProps) {
   return (
     <div
       className={cn(
-        "flex h-[86px] items-center gap-3 px-5 py-[14px]",
+        "flex h-[70px] items-center gap-2.5 px-4 py-[10px]",
         !first && "border-t border-[var(--divider)]",
       )}
     >
       <BillIcon iconKey={item.iconKey} />
 
       <div className="min-w-0 flex-1">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-2.5">
           <div className="min-w-0">
-            <div className="truncate text-[16px] font-semibold leading-6 text-[var(--text-primary)]">
+            <div className="truncate text-[13px] font-medium leading-5 text-[var(--text-primary)]">
               {item.title}
             </div>
-            <div className="mt-0.5 truncate text-[13px] font-medium leading-5 text-[var(--text-secondary)]">
+            <div className="mt-0.5 truncate text-[11px] font-medium leading-4 text-[var(--text-secondary)]">
               {item.accountName}
             </div>
           </div>
@@ -36,17 +36,17 @@ export function BillItem({ item, first = false }: BillItemProps) {
         </div>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2.5">
         <div className="text-right">
           <div
             className={cn(
-              "text-[16px] font-bold leading-6 tracking-[-0.02em]",
+              "text-[13px] font-semibold leading-5 tracking-[-0.02em]",
               isPositive ? "text-[var(--income)]" : "text-[var(--expense)]",
             )}
           >
             {formatSignedAmount(item.amount, item.currency)}
           </div>
-          <div className="mt-0.5 text-[14px] font-medium leading-5 text-[var(--text-secondary)]">
+          <div className="mt-0.5 text-[11px] font-medium leading-4 text-[var(--text-secondary)]">
             {new Date(item.occurredAt).toLocaleTimeString("zh-CN", {
               hour: "2-digit",
               minute: "2-digit",
@@ -54,7 +54,7 @@ export function BillItem({ item, first = false }: BillItemProps) {
             })}
           </div>
         </div>
-        <ChevronRight className="h-[18px] w-[18px] text-[var(--text-secondary)]" strokeWidth={2} />
+        <ChevronRight className="h-[14px] w-[14px] text-[var(--text-secondary)]" strokeWidth={2} />
       </div>
     </div>
   );
