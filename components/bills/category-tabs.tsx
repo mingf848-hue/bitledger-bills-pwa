@@ -2,11 +2,11 @@ import type { BillType } from "@/lib/types/bill";
 import { cn } from "@/lib/utils/classnames";
 
 const items: Array<{ label: string; value: BillType | "all"; minWidthClassName: string }> = [
-  { label: "全部", value: "all", minWidthClassName: "min-w-[64px]" },
-  { label: "支出", value: "expense", minWidthClassName: "min-w-[66px]" },
-  { label: "收入", value: "income", minWidthClassName: "min-w-[66px]" },
-  { label: "理财", value: "wealth", minWidthClassName: "min-w-[66px]" },
-  { label: "转账", value: "transfer", minWidthClassName: "min-w-[66px]" },
+  { label: "全部", value: "all", minWidthClassName: "min-w-[70px]" },
+  { label: "支出", value: "expense", minWidthClassName: "min-w-[72px]" },
+  { label: "收入", value: "income", minWidthClassName: "min-w-[72px]" },
+  { label: "理财", value: "wealth", minWidthClassName: "min-w-[72px]" },
+  { label: "转账", value: "transfer", minWidthClassName: "min-w-[72px]" },
 ];
 
 type CategoryTabsProps = {
