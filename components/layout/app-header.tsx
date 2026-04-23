@@ -4,17 +4,17 @@ import { IconButton } from "@/components/common/icon-button";
 
 export function AppHeader() {
   return (
-    <header className="flex h-[46px] items-center justify-between">
+    <header className="flex h-[52px] items-center justify-between">
       <div className="flex items-center gap-2">
         <Image
           src="/logos/bitledger-mark.svg"
           alt="BitLedger logo"
-          width={26}
-          height={26}
+          width={30}
+          height={30}
           priority
-          className="h-[26px] w-[26px]"
+          className="h-[30px] w-[30px] rounded-[9px]"
         />
-        <div className="text-[17px] font-semibold leading-5 tracking-[-0.04em] text-[var(--text-primary)]">
+        <div className="text-[22px] font-semibold leading-[22px] tracking-[-0.04em] text-[var(--text-primary)]">
           <span>BitLedger </span>
           <span className="text-[var(--brand-primary)]">Pro</span>
         </div>
@@ -22,15 +22,15 @@ export function AppHeader() {
 
       <div className="flex items-center gap-1">
         <IconButton>
-          <Search className="h-[18px] w-[18px] stroke-[1.9]" />
+          <Search className="h-[21px] w-[21px] stroke-[1.9]" />
         </IconButton>
         <IconButton className="overflow-visible">
-          <Bell className="h-[18px] w-[18px] stroke-[1.9]" />
-          <span className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-[var(--expense)]" />
+          <Bell className="h-[21px] w-[21px] stroke-[1.9]" />
+          <span className="absolute top-1 right-1 h-[7px] w-[7px] rounded-full bg-[var(--expense)]" />
         </IconButton>
         <button
           type="button"
-          className="h-[26px] w-[26px] overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_30%,#65A8FF_0%,#2F6BFF_48%,#17338B_100%)] shadow-[0_6px_12px_rgba(47,107,255,0.14)]"
+          className="h-[31px] w-[31px] overflow-hidden rounded-full bg-[radial-gradient(circle_at_50%_30%,#65A8FF_0%,#2F6BFF_48%,#17338B_100%)] shadow-[0_7px_14px_rgba(47,107,255,0.14)]"
           aria-label="Open profile"
         >
           <span className="sr-only">Profile</span>

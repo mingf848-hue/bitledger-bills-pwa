@@ -10,7 +10,7 @@ export function IconButton({ children, className }: IconButtonProps) {
     <button
       type="button"
       className={cn(
-        "relative flex h-8 w-8 items-center justify-center rounded-full text-[var(--text-primary)] transition-transform duration-150 active:scale-95",
+        "relative flex h-9 w-9 items-center justify-center rounded-full text-[var(--text-primary)] transition-transform duration-150 active:scale-95",
         className,
       )}
     >
