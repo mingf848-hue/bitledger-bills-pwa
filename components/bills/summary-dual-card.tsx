@@ -8,7 +8,7 @@ type SummaryDualCardProps = {
 
 export function SummaryDualCard({ summary }: SummaryDualCardProps) {
   return (
-    <SectionCard className="grid h-[108px] grid-cols-2 px-3 py-3">
+    <SectionCard className="grid h-[108px] grid-cols-2 rounded-[16px] px-3 py-3">
       <div className="pr-3">
         <SummaryPanel
           label="本月支出"
