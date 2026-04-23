@@ -16,7 +16,7 @@ type CategoryTabsProps = {
 
 export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
   return (
-    <div className="scrollbar-hidden flex min-w-0 flex-1 items-center justify-start gap-2 overflow-x-auto">
+    <div className="scrollbar-hidden flex min-w-0 flex-1 items-center justify-start gap-[6.75px] overflow-x-auto">
       {items.map((item) => {
         const active = item.value === value;
 
