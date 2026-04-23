@@ -16,7 +16,7 @@ type CategoryTabsProps = {
 
 export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
   return (
-    <div className="flex min-w-0 flex-1 items-center justify-start gap-3">
+    <div className="scrollbar-hidden flex min-w-0 flex-1 items-center justify-start gap-3 overflow-x-auto">
       {items.map((item) => {
         const active = item.value === value;
 
@@ -26,7 +26,7 @@ export function CategoryTabs({ value, onChange }: CategoryTabsProps) {
             type="button"
             onClick={() => onChange(item.value)}
             className={cn(
-              "flex h-8 min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-[16px] px-2.5 text-[14px] font-medium leading-5 transition-[background-color,color,box-shadow,border-color]",
+              "flex h-8 min-w-[46px] shrink-0 items-center justify-center whitespace-nowrap rounded-[16px] px-3.5 text-[14px] font-medium leading-5 transition-[background-color,color,box-shadow,border-color]",
               active
                 ? "bg-[var(--brand-primary-strong)] text-white shadow-[0_4px_10px_rgba(22,101,245,0.18)]"
                 : "border border-transparent bg-[var(--filter-chip-bg)] text-[var(--filter-chip-text)] shadow-[0_1px_3px_rgba(15,23,42,0.05)]",
