@@ -54,7 +54,7 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
         <FilterButton />
       </div>
 
-      <div className="flex min-w-0 items-center gap-3 rounded-[22px] bg-[var(--filter-group-bg)] pr-3 py-3">
+      <div className="flex min-w-0 items-center gap-2 rounded-[22px] bg-[var(--filter-group-bg)] px-3 py-2.5">
         <CategoryTabs value={activeCategory} onChange={setActiveCategory} />
         <RangeTabs value={activeRange} onChange={setActiveRange} />
       </div>
