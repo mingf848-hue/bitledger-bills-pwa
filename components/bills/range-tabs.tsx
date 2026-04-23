@@ -25,7 +25,7 @@ export function RangeTabs({ value, onChange }: RangeTabsProps) {
               type="button"
               onClick={() => onChange(item.value)}
               className={cn(
-                "flex h-[24px] w-[38px] shrink-0 items-center justify-center rounded-[8px] text-[14px] font-medium leading-5 transition-[border-color,color,box-shadow,background-color]",
+                "flex h-[24px] w-[38px] shrink-0 items-center justify-center rounded-[8px] text-[12px] font-medium leading-4 transition-[border-color,color,box-shadow,background-color]",
                 active
                   ? "bg-[#1665F5] text-white shadow-[0_2px_4px_rgba(15,23,42,0.08)]"
                   : "bg-transparent text-[#4B5267]",

@@ -54,9 +54,13 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
         <FilterButton />
       </div>
 
-      <div className="flex min-w-0 items-center gap-[23.27px] rounded-[22px] bg-[var(--filter-group-bg)] pr-3 py-2.5">
-        <CategoryTabs value={activeCategory} onChange={setActiveCategory} />
-        <RangeTabs value={activeRange} onChange={setActiveRange} />
+      <div className="relative h-[48px] rounded-[22px] bg-[var(--filter-group-bg)]">
+        <div className="absolute left-[15.47px] top-1/2 -translate-y-1/2">
+          <CategoryTabs value={activeCategory} onChange={setActiveCategory} />
+        </div>
+        <div className="absolute left-[299.39px] top-1/2 -translate-y-1/2">
+          <RangeTabs value={activeRange} onChange={setActiveRange} />
+        </div>
       </div>
 
       <SummaryDualCard summary={data.summary} />

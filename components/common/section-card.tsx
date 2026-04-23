@@ -9,7 +9,7 @@ export function SectionCard({ children, className }: SectionCardProps) {
   return (
     <section
       className={cn(
-        "card-surface rounded-[24px] bg-[var(--bg-card)]",
+        "card-surface rounded-[16px] bg-[var(--bg-card)]",
         className,
       )}
     >
