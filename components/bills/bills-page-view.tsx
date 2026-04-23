@@ -55,7 +55,7 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
       </div>
 
       <div className="relative h-[48px] rounded-[22px] bg-[var(--filter-group-bg)]">
-        <div className="absolute left-[15.47px] top-1/2 -translate-y-1/2">
+        <div className="absolute left-0 top-1/2 -translate-y-1/2">
           <CategoryTabs value={activeCategory} onChange={setActiveCategory} />
         </div>
         <div className="absolute right-0 top-1/2 -translate-y-1/2">
