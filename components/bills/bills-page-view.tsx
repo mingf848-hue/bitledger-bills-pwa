@@ -45,23 +45,23 @@ export function BillsPageView({ initialData }: BillsPageViewProps) {
   );
 
   return (
-    <MobilePwaShell className="gap-[10px]">
+    <MobilePwaShell className="gap-2">
       <AppHeader />
 
-      <div className="flex items-center gap-[10px] pt-1">
+      <div className="flex items-center gap-2 pt-0.5">
         <MonthPicker monthLabel={monthLabel} />
         <SearchInput value={searchValue} onChange={setSearchValue} />
         <FilterButton />
       </div>
 
-      <div className="flex items-center justify-between gap-[10px]">
+      <div className="flex items-center justify-between gap-2">
         <CategoryTabs value={activeCategory} onChange={setActiveCategory} />
         <RangeTabs value={activeRange} onChange={setActiveRange} />
       </div>
 
       <SummaryDualCard summary={data.summary} />
 
-      <div className="flex flex-col gap-[10px]">
+      <div className="flex flex-col gap-2">
         {filteredGroups.length > 0 ? (
           filteredGroups.map((group) => <BillDateGroup key={group.id} group={group} />)
         ) : (

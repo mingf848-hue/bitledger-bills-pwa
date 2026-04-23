@@ -16,7 +16,7 @@ export function BillCategoryTag({ label, tone }: BillCategoryTagProps) {
   return (
     <span
       className={cn(
-        "inline-flex h-[22px] items-center rounded-[8px] px-[8px] text-[12px] font-medium leading-4",
+        "inline-flex h-5 min-w-[38px] items-center justify-center whitespace-nowrap rounded-[7px] px-[6px] text-[11px] font-medium leading-4",
         toneMap[tone],
       )}
     >
