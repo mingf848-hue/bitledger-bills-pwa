@@ -1,9 +1,5 @@
-import { BillsPageView } from "@/components/bills/bills-page-view";
-import { getBillPageSnapshotServer } from "@/lib/server/bills-repository";
+import { redirect } from "next/navigation";
 
-export const dynamic = "force-dynamic";
-
-export default async function BillsPage() {
-  const initialData = await getBillPageSnapshotServer();
-  return <BillsPageView initialData={initialData} />;
+export default function BillsPage() {
+  redirect("/");
 }

@@ -1,11 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
 import "./globals.css";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bitledger-bills-pwa.vercel.app"),
@@ -32,10 +26,12 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F5F7FB",
+  themeColor: "#f4f5f8",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
   viewportFit: "cover",
 };
 
@@ -45,8 +41,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={`${manrope.variable} h-full antialiased`}>
-      <body className="min-h-full bg-[var(--bg-page)] font-sans text-[var(--text-primary)]">
+    <html lang="zh-CN" className="h-full antialiased">
+      <body className="bg-[#f4f5f8] font-sans text-[var(--text-primary)]">
         {children}
       </body>
     </html>

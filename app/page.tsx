@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { WalletSpa } from "@/components/wallet/wallet-spa";
 
 export default function IndexPage() {
-  redirect("/bills");
+  return <WalletSpa />;
 }
