@@ -327,11 +327,11 @@ export function AssetsScreen({ onTabChange }) {
               <span className="text-[12px]">总资产 (估值)</span>
               <Info className="w-[12px] h-[12px]" strokeWidth={2} />
             </div>
-            <div className="flex bg-[#f4f5f8] rounded-[6px] p-[2px]">
-              <button className="px-[8px] py-[3px] text-[11px] font-medium text-[#8e8e93] active:opacity-60">1天</button>
-              <button className="px-[8px] py-[3px] text-[11px] font-medium text-[#8e8e93] active:opacity-60">7天</button>
-              <button className="px-[8px] py-[3px] text-[11px] font-semibold text-[#1677ff] bg-white rounded-[4px] shadow-[0_1px_3px_rgba(0,0,0,0.05)]">30天</button>
-              <button className="px-[8px] py-[3px] text-[11px] font-medium text-[#8e8e93] active:opacity-60">自定义</button>
+            <div className="flex bg-[#f4f5f8] rounded-[8px] p-[2px]">
+              <button className="h-[28px] w-[44px] text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60">1天</button>
+              <button className="h-[28px] w-[44px] text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60">7天</button>
+              <button className="h-[28px] w-[44px] text-[12px] leading-none font-semibold text-[#1677ff] bg-white rounded-[6px] shadow-[0_1px_3px_rgba(0,0,0,0.05)]">30天</button>
+              <button className="h-[28px] w-[56px] text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60">自定义</button>
             </div>
           </div>
           
@@ -570,7 +570,7 @@ export function AssetsScreen({ onTabChange }) {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[32px] z-[20]">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[max(16px,env(safe-area-inset-bottom))] z-[20]">
         <button onClick={() => onTabChange?.('home')} className="flex flex-col items-center active:scale-95 transition-transform w-[48px]">
           <Home className="w-[22px] h-[22px] text-[#8e8e93]" strokeWidth={1.5} />
           <span className="text-[10px] mt-[4px] font-medium text-[#8e8e93]">首页</span>

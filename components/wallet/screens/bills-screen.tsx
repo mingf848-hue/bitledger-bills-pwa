@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unused-vars, @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/ban-ts-comment, @next/next/no-img-element */
 // @ts-nocheck
 'use client';
 import React, { useState, useMemo } from 'react';
@@ -273,14 +273,14 @@ export function BillsScreen({ onTabChange }) {
   }, [data, selectedFilter]);
 
   return (
-    <div className="bg-[#f4f5f8] min-h-[932px] w-[430px] font-sans text-gray-900 pb-[100px] mx-auto relative overflow-x-hidden shadow-2xl">
+    <div className="bg-[#f4f5f8] min-h-full w-full max-w-[430px] font-sans text-gray-900 pb-[16px] mx-auto relative overflow-x-hidden overscroll-none">
       <style dangerouslySetInnerHTML={{__html: `
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}} />
 
       {/* Header */}
-      <div className="px-[16px] pt-[52px] pb-[10px] flex items-center justify-between sticky top-0 z-[15] bg-[#f4f5f8]/95 backdrop-blur-sm">
+      <div className="px-[16px] pt-[52px] pb-[10px] flex items-center justify-between sticky top-0 z-[15] bg-[#f4f5f8]/95 backdrop-blur-sm overscroll-none">
         <div className="flex items-center space-x-[6px]">
           <LogoIcon />
           <span className="text-[20px] font-bold text-[#1c1c1e] italic tracking-tight" style={{fontFamily: 'Helvetica Neue, Arial, sans-serif'}}>
@@ -454,15 +454,15 @@ export function BillsScreen({ onTabChange }) {
       <div className="px-[16px] mt-[12px] flex items-center justify-between relative z-10">
         <div className="flex space-x-[6px]">
           {['全部', '支出', '收入', '理财', '转账'].map((item, index) => (
-            <button key={index} className={`whitespace-nowrap px-[12px] py-[5px] rounded-[8px] text-[13px] font-medium transition-all active:scale-95 ${index === 0 ? 'bg-[#1677ff] text-white shadow-[0_2px_8px_rgba(22,119,255,0.2)]' : 'bg-white text-[#5c5c5e] shadow-[0_1px_4px_rgba(0,0,0,0.02)] hover:bg-gray-50'}`}>
+            <button key={index} className={`flex h-[28px] w-[44px] items-center justify-center whitespace-nowrap rounded-[8px] !text-[12px] leading-none font-medium transition-all active:scale-95 ${index === 0 ? 'bg-[#1677ff] text-white shadow-[0_2px_8px_rgba(22,119,255,0.2)]' : 'bg-white text-[#5c5c5e] shadow-[0_1px_4px_rgba(0,0,0,0.02)] hover:bg-gray-50'}`} style={{ fontSize: 12, lineHeight: '12px' }}>
               {item}
             </button>
           ))}
         </div>
         <div className="flex bg-white rounded-[8px] p-[2px] shadow-[0_1px_4px_rgba(0,0,0,0.02)] shrink-0">
-          <button className="w-[30px] py-[3px] text-[12px] font-semibold text-[#1677ff] active:opacity-60 transition-opacity">日</button>
-          <button className="w-[30px] py-[3px] text-[12px] font-medium text-[#8e8e93] active:opacity-60 transition-opacity hover:text-gray-600">周</button>
-          <button className="w-[30px] py-[3px] text-[12px] font-medium text-[#8e8e93] active:opacity-60 transition-opacity hover:text-gray-600">月</button>
+          <button className="flex h-[28px] w-[44px] items-center justify-center !text-[12px] leading-none font-semibold text-[#1677ff] active:opacity-60 transition-opacity" style={{ fontSize: 12, lineHeight: '12px' }}>日</button>
+          <button className="flex h-[28px] w-[44px] items-center justify-center !text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60 transition-opacity hover:text-gray-600" style={{ fontSize: 12, lineHeight: '12px' }}>周</button>
+          <button className="flex h-[28px] w-[44px] items-center justify-center !text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60 transition-opacity hover:text-gray-600" style={{ fontSize: 12, lineHeight: '12px' }}>月</button>
         </div>
       </div>
 
@@ -540,9 +540,9 @@ export function BillsScreen({ onTabChange }) {
 
       {/* Transaction Detail Modal */}
       {selectedTx && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/30 backdrop-blur-[4px] transition-opacity">
-          <div className="w-full max-w-[430px] h-full relative flex items-center justify-center px-[24px]">
-             <div className="bg-white w-full rounded-[24px] px-[20px] pb-[20px] pt-[16px] shadow-2xl relative animate-in fade-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-[100] flex h-[100dvh] items-center justify-center overflow-hidden bg-black/30 px-[24px] py-[max(16px,env(safe-area-inset-bottom))] backdrop-blur-[4px] transition-opacity touch-none">
+          <div className="w-full max-w-[430px] relative flex max-h-full items-center justify-center">
+             <div className="bg-white w-full max-h-full overflow-y-auto hide-scrollbar rounded-[24px] px-[20px] pb-[20px] pt-[16px] shadow-2xl relative animate-in fade-in zoom-in-95 duration-200 touch-pan-y">
                 <div className="absolute top-[10px] left-1/2 transform -translate-x-1/2 w-[36px] h-[4px] bg-[#e5e5ea] rounded-full"></div>
                 <h3 className="text-[16px] font-bold text-[#1c1c1e] mt-[4px]">账单详情</h3>
                 <button onClick={() => setSelectedTx(null)} className="absolute top-[18px] right-[16px] active:scale-90 transition-transform">
@@ -578,7 +578,7 @@ export function BillsScreen({ onTabChange }) {
                       <input 
                         type="text" value={tempNote} onChange={(e) => setTempNote(e.target.value)} 
                         className="flex-1 text-[14px] font-medium text-[#1c1c1e] outline-none bg-transparent placeholder-[#c7c7cc]" 
-                        placeholder="添加备注..." autoFocus
+                        placeholder="添加备注..."
                       />
                       <Pen className="w-[16px] h-[16px] text-[#8e8e93] shrink-0 ml-[8px]" strokeWidth={2} />
                    </div>
@@ -594,7 +594,7 @@ export function BillsScreen({ onTabChange }) {
       )}
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[32px] z-[200]">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[max(16px,env(safe-area-inset-bottom))] z-[200]">
         <button onClick={() => onTabChange?.('home')} className="flex flex-col items-center active:scale-95 transition-transform w-[48px]">
           <Home className="w-[22px] h-[22px] text-[#8e8e93]" strokeWidth={1.5} />
           <span className="text-[10px] mt-[4px] font-medium text-[#8e8e93]">首页</span>

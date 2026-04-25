@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unused-vars, @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unused-vars */
 // @ts-nocheck
 'use client';
 import React, { useState } from 'react';
@@ -229,12 +229,12 @@ export function StatsScreen({ onTabChange }) {
           <ChevronDown className="w-[14px] h-[14px] text-[#8e8e93]" strokeWidth={2.5} />
         </button>
 
-        <div className="flex bg-[#f4f5f8] rounded-[10px] p-[3px]">
+        <div className="flex bg-[#f4f5f8] rounded-[8px] p-[2px]">
           {['月', '年', '自定义'].map((tab) => (
             <button 
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-[16px] py-[5px] text-[13px] rounded-[8px] transition-all ${
+              className={`flex h-[28px] ${tab === '自定义' ? 'w-[56px]' : 'w-[44px]'} items-center justify-center rounded-[6px] text-[12px] leading-none transition-all ${
                 activeTab === tab 
                   ? 'bg-white text-[#1677ff] font-semibold shadow-[0_1px_4px_rgba(0,0,0,0.04)] border border-[#e5e5ea]' 
                   : 'text-[#8e8e93] font-medium active:bg-gray-200'
@@ -641,7 +641,7 @@ export function StatsScreen({ onTabChange }) {
       )}
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[32px] z-[200]">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[max(16px,env(safe-area-inset-bottom))] z-[200]">
         <button onClick={() => onTabChange?.('home')} className="flex flex-col items-center active:scale-95 transition-transform w-[48px]">
           <Home className="w-[22px] h-[22px] text-[#8e8e93]" strokeWidth={1.5} />
           <span className="text-[10px] mt-[4px] font-medium text-[#8e8e93]">首页</span>

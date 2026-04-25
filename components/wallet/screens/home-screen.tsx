@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment, @typescript-eslint/no-unused-vars, @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/ban-ts-comment, @next/next/no-img-element */
 // @ts-nocheck
 'use client';
 import React, { useState } from 'react';
@@ -166,9 +166,9 @@ export function HomeScreen({ onTabChange }) {
             <ChevronDown className="w-[13px] h-[13px] text-[#8e8e93]" strokeWidth={2.5} />
           </button>
           <div className="flex bg-white rounded-[8px] p-[2px] shadow-[0_1px_4px_rgba(0,0,0,0.02)] shrink-0">
-            <button className="w-[36px] py-[4px] text-[12px] font-semibold text-[#1677ff] bg-[#f0f5ff] rounded-[6px]">月</button>
-            <button className="w-[36px] py-[4px] text-[12px] font-medium text-[#8e8e93] active:opacity-60 transition-opacity">年</button>
-            <button className="w-[46px] py-[4px] text-[12px] font-medium text-[#8e8e93] active:opacity-60 transition-opacity">自定义</button>
+            <button className="flex h-[28px] w-[44px] items-center justify-center rounded-[6px] bg-[#f0f5ff] text-[12px] leading-none font-semibold text-[#1677ff]">月</button>
+            <button className="flex h-[28px] w-[44px] items-center justify-center text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60 transition-opacity">年</button>
+            <button className="flex h-[28px] w-[56px] items-center justify-center text-[12px] leading-none font-medium text-[#8e8e93] active:opacity-60 transition-opacity">自定义</button>
           </div>
         </div>
 
@@ -416,7 +416,7 @@ export function HomeScreen({ onTabChange }) {
       </div>
 
       {/* Bottom Navigation */}
-      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[32px] z-[200]">
+      <div className="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-[430px] bg-[#fdfdfd] border-t border-[#f0f0f0] flex justify-between items-center px-[40px] pt-[8px] pb-[max(16px,env(safe-area-inset-bottom))] z-[200]">
         <button onClick={() => onTabChange?.('home')} className="flex flex-col items-center active:scale-95 transition-transform w-[48px]">
           <Home className="w-[22px] h-[22px] text-[#1677ff] fill-[#1677ff]" strokeWidth={1.5} />
           <span className="text-[10px] mt-[4px] font-semibold text-[#1677ff]">首页</span>
